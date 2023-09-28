@@ -1,0 +1,33 @@
+* {
+    font-family: sans-serif;
+    color: #495159;
+}
+
+header {
+    text-align: center;
+    padding: 10px 100px;
+}
+
+main {
+    text-align: center;
+}
+
+/* style the answer options displayed as an unordered list */
+li {
+    padding: 10px 10px;
+    margin: 5px 200px;
+    list-style: none;
+    border: thick solid #E5D4C0;
+    color: #495159;
+    border-radius: 10px;
+}
+
+.correct{
+    background-color: #A1E8CC;
+    border-color: #A1E8CC;
+}
+
+.wrong{
+    background-color: #FAB9B9;
+    border-color: #FAB9B9;
+}
