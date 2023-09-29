@@ -12,6 +12,15 @@ main {
     text-align: center;
 }
 
+/* style the start button */
+button {
+    background-color: #A1E8CC;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 30px;
+    border: thick solid #495159;
+}
+
 /* style the answer options displayed as an unordered list */
 li {
     padding: 10px 10px;

@@ -10,22 +10,69 @@ var quizlist = [
         question: "What does DOM stand for?",
         options:["Document Object Model", "Domain Object Model","Document Optmization Model","Domain Open Model"],
         rightAnswer:0
-    }
+    },
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        options:["javascript", "js","script","style"],
+        rightAnswer:2
+    },
+    {
+        question: "What is it called to use a variable before it has been declared in Javascript?",
+        options:["slack out", "console log out","empty declare","hoist"],
+        rightAnswer:3
+    },
+    {
+        question: "What is the javasript method to display an alert box with a message and an OK button?",
+        options:["prompt", "alert","confirm","warn"],
+        rightAnswer:1
+    },
+    {
+        question: "Which method returns the first Element that matches the specified selector, or group of selectors?",
+        options:["querySelector()", "querySelectorAll()","queryCommandState()","getSelection()"],
+        rightAnswer:0
+    },
+    {
+        question: "What is the correct HTML element for inserting a line break?",
+        options:["break", "line","br","hr"],
+        rightAnswer:2
+    },
+    {
+        question: "What is the correct CSS for adding a background color?",
+        options:["color: yellow;", "background-color: yellow;","background: yellow;","backgroundcolor: yellow;"],
+        rightAnswer:1
+    },
+    {
+        question: "What is the correct CSS to enable a flex context for all its direct children?",
+        options:["flexbox: true;", "flex-box: true;","display: flex;","display: flex-box;"],
+        rightAnswer:2
+    },
+    {
+        question: "What is the correct CSS to order items in the flex container left to right?",
+        options:["flex-direction: row;", "flex-direction: row-reverse;","flex-direction: column;","flex-direction: column-reverse;"],
+        rightAnswer:0
+    },
+    {
+        question: "What is the correct CSS to distribute items evenly in the line along the main axis?",
+        options:["justify-content: center;", "align-content: center;","align-content: space-between;","justify-content: space-between;"],
+        rightAnswer:3
+    },
 ]
 
-// Randomly select from the quiz list
-i = 1;
-
-// result counter
+//  counter
+var i = 0;
 var c = 0;
 var w = 0;
 
+// Start the quiz at the click of the start button
+var startButton = document.querySelector("button");
+startButton.addEventListener("click",function(){
+    i = 0;
+    newQuiz();
+});
+
 // Display qiuz contents on the page
-
-var mainPageHeader = document.querySelector("h2");
-mainPageHeader.textContent = quizlist[i].question;
-
 // Create unordered list element
+var mainPageHeader = document.querySelector("h2");
 var mainContainer = document.getElementById("main_content");
 
 var list = document.createElement("ul");
@@ -39,16 +86,24 @@ li2.textContent = quizlist[i].options[1];
 li3.textContent = quizlist[i].options[2];
 li4.textContent = quizlist[i].options[3];
 
-mainContainer.appendChild(list);
-list.appendChild(li1);
-list.appendChild(li2);
-list.appendChild(li3);
-list.appendChild(li4);
+// Show new quiz
+function newQuiz() {
+    mainPageHeader.textContent = quizlist[i].question;
+    li1.textContent = quizlist[i].options[0];
+    li2.textContent = quizlist[i].options[1];
+    li3.textContent = quizlist[i].options[2];
+    li4.textContent = quizlist[i].options[3];
+    mainContainer.appendChild(list);
+    list.appendChild(li1);
+    list.appendChild(li2);
+    list.appendChild(li3);
+    list.appendChild(li4);
+};
 
 // Add answer check and style change when one of the optisons are selected
 var bottomText = document.getElementById("bottom_content");
 
-li1.addEventListener("click",function(){
+li1.addEventListener("click",function(event){
     if (quizlist[i].rightAnswer === 0) {
         li1.setAttribute("class", "correct");
         c++;
@@ -58,6 +113,16 @@ li1.addEventListener("click",function(){
         w++;
         bottomText.textContent = "It's wrong. You made " + c + " correct answer(s) and " + w + " wrong answer(s) so far."
     };
+    // Prevent from users to click again
+    list.setAttribute("style","pointer-events: none;");
+    // Wait for one second and show new quiz
+    setTimeout(function(){
+        i++;
+        newQuiz();
+        li1.setAttribute("class", "");
+        bottomText.textContent = "";
+        list.setAttribute("style","pointer-events: auto;");
+    },1000)
 });
 
 li2.addEventListener("click",function(){
@@ -70,6 +135,14 @@ li2.addEventListener("click",function(){
         w++;
         bottomText.textContent = "It's wrong. You made " + c + " correct answer(s) and " + w + " wrong answer(s) so far."
     };
+    list.setAttribute("style","pointer-events: none;");
+    setTimeout(function(){
+        i++;
+        newQuiz();
+        li2.setAttribute("class", "");
+        bottomText.textContent = "";
+        list.setAttribute("style","pointer-events: auto;");
+    },1000)
 });
 
 li3.addEventListener("click",function(){
@@ -82,6 +155,14 @@ li3.addEventListener("click",function(){
         w++;
         bottomText.textContent = "It's wrong. You made " + c + " correct answer(s) and " + w + " wrong answer(s) so far."
     };
+    list.setAttribute("style","pointer-events: none;");
+    setTimeout(function(){
+        i++;
+        newQuiz();
+        li3.setAttribute("class", "");
+        bottomText.textContent = "";
+        list.setAttribute("style","pointer-events: auto;");
+    },1000)
 });
 
 console.log(quizlist[i].rightAnswer);
@@ -96,4 +177,12 @@ li4.addEventListener("click",function(){
         w++;
         bottomText.textContent = "It's wrong. You made " + c + " correct answer(s) and " + w + " wrong answer(s) so far."
     };
+    list.setAttribute("style","pointer-events: none;");
+    setTimeout(function(){
+        i++;
+        newQuiz();
+        li4.setAttribute("class", "");
+        bottomText.textContent = "";
+        list.setAttribute("style","pointer-events: auto;");
+    },1000)
 });
