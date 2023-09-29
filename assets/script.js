@@ -71,7 +71,12 @@ function answerSelect(listNum, rightAnswerLocation) {
     } else {
         listNum.setAttribute("class", "wrong");
         w++;
-        secondsLeft = secondsLeft - 9;
+        if (secondsLeft > 9) {
+            secondsLeft = secondsLeft - 9;
+        } else {
+            secondsLeft = 1;
+            return;
+        };
         bottomText.textContent = "It's wrong. You made " + c + " correct answer(s) and " + w + " wrong answer(s) so far."
     };
     // Prevent from users to click again
