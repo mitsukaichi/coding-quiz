@@ -1,7 +1,6 @@
 //  counter
 var i = 0;
-var c = 0;
-var w = 0;
+var point = 0;
 
 // Create a timer function that starts at the start button click
 
@@ -21,7 +20,7 @@ function setTime() {
 
 
 // Start the quiz at the click of the start button
-var startButton = document.querySelector("button");
+var startButton = document.getElementById("startbutton");
 startButton.addEventListener("click",function(){
     i = 0;
     newQuiz();
@@ -30,10 +29,20 @@ startButton.addEventListener("click",function(){
 
 // Switch to time out screen when the remaining second is 0 
 
+var resultInput = document.getElementById("result_input");
+
 function timeOver() {
-    mainPageHeader.textContent = "Time is over!"
-    mainContainer.textContent = "You made " + c + " correct answers and " + w + " wrong answers."
+    mainPageHeader.textContent = "Time is up!"
+    mainContainer.textContent = "You earned " + point + " points."
+    resultInput.setAttribute("class","display");
 };
+
+// Send the data to local storage upon submit button click
+var submitButton = document.getElementById("submitbutton");
+var userName = document.querySelector("input");
+submitButton.addEventListener("click",function(){
+    console.log(userName.value);
+})
 
 // Display qiuz contents on the page
 // Create unordered list element
@@ -66,18 +75,17 @@ var bottomText = document.getElementById("bottom_content");
 function answerSelect(listNum, rightAnswerLocation) {
     if (quizList[i].rightAnswer === rightAnswerLocation) {
         listNum.setAttribute("class", "correct");
-        c++;
-        bottomText.textContent = "It's correct! You made " + c + " correct answer(s) and " + w + " wrong answer(s) so far."
+        point++;
+        bottomText.textContent = "You're right! You've earned " + point + " points so far."
     } else {
         listNum.setAttribute("class", "wrong");
-        w++;
         if (secondsLeft > 9) {
             secondsLeft = secondsLeft - 9;
         } else {
             secondsLeft = 1;
             return;
         };
-        bottomText.textContent = "It's wrong. You made " + c + " correct answer(s) and " + w + " wrong answer(s) so far."
+        bottomText.textContent = "Hmmm, it's wrong."
     };
     // Prevent from users to click again
     list.setAttribute("style","pointer-events: none;");

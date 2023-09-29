@@ -1,6 +1,7 @@
 * {
     font-family: sans-serif;
     color: #495159;
+    text-align: center;
 }
 
 header {
@@ -8,12 +9,8 @@ header {
     padding: 10px 100px;
 }
 
-main {
-    text-align: center;
-}
-
 /* style the start button */
-button {
+#startbutton {
     background-color: #A1E8CC;
     font-size: 30px;
     padding: 10px;
@@ -40,4 +37,29 @@ li {
 .wrong{
     background-color: #FAB9B9;
     border-color: #FAB9B9;
+}
+
+/* style the result submission screen*/
+
+input{
+    border: 2px solid #495159;
+    font-size: 20px;
+    margin: 10px;
+}
+
+#submitbutton {
+    background-color: #A1E8CC;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 30px;
+    border: 3px solid #495159;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.display{
+    display: inline-block;
 }
