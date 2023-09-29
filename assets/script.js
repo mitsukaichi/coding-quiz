@@ -173,4 +173,49 @@ var quizList = [
         options:["justify-content: center;", "align-content: center;","align-content: space-between;","justify-content: space-between;"],
         rightAnswer:3
     },
+    {
+        question: "What is the HTML attribute to store extra information on standard, semantic HTML elements?",
+        options:["extrainfo", "data","meta","id"],
+        rightAnswer:1
+    },
+    {
+        question: "Which javascript proparty is a reference to the object onto which the event was dispatched?",
+        options:["object", "reference","event","target"],
+        rightAnswer:3
+    },
+    {
+        question: "Which read-only property of the HTMLElement provides read/write access to custom data attributes (data-*) on elements?",
+        options:["dataset", "getdata","customdata","dataattribute"],
+        rightAnswer:0
+    },
+    {
+        question: "Which method of the Element interface tests whether the element would be selected by the specified CSS selector?",
+        options:["pretend()", "check()","matches()","test()"],
+        rightAnswer:2
+    },
+    {
+        question: "Which HTML object allows you to save key/value pairs in the browser?",
+        options:["localStorage", "keyValuePair","browserStorage","windowStorage"],
+        rightAnswer:0
+    },
+    {
+        question: "What is the correct CSS to allow the items to wrap onto multiple lines, from top to bottom?",
+        options:["flex: wrap;", "flex-wrap: wrap;","display: flex-wrap;","flex-wrap: wrap-reverse;"],
+        rightAnswer:1
+    },
+    {
+        question: "Which HTML element creates web-based forms to accept data from the user?",
+        options:["<form>", "<data>","<forms>","<input>"],
+        rightAnswer:3
+    },
+    {
+        question: "Which javascript code gets a value user submitted to the form with an id input_form?",
+        options:["document.getElementById('input_form').form", "document.getElementById('input_form')","document.getElementById('input_form').value","document.getInputById('input_form')"],
+        rightAnswer:2
+    },
+    {
+        question: "In which format format keys and values stored in with localStorage?",
+        options:["string", "boolean","numeric","object"],
+        rightAnswer:0
+    },
 ]
