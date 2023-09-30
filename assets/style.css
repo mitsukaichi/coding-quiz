@@ -47,7 +47,7 @@ input{
     margin: 10px;
 }
 
-#submitbutton {
+.smallbutton {
     background-color: #A1E8CC;
     font-size: 15px;
     padding: 10px;

@@ -1,3 +1,7 @@
+var submitButton = document.getElementById("submitbutton");
+var userNameInput = document.querySelector("input");
+var replay = document.getElementById("replay");
+
 //  counter
 var i = 0;
 var point = 0;
@@ -7,6 +11,13 @@ var point = 0;
 var secondsLeft = 60;
 var remainingTime = document.querySelector("#remaining_time");
 
+if (localStorage.getItem("codingquizresult") !== null){
+    var resultHistory = JSON.parse(localStorage.getItem("codingquizresult"));
+} else {
+    var resultHistory = [];
+}
+
+
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
@@ -14,7 +25,7 @@ function setTime() {
     if(secondsLeft === 0) {
      clearInterval(timerInterval);
      timeOver();
-    }
+    };
   }, 1000);
 };
 
@@ -33,16 +44,32 @@ var resultInput = document.getElementById("result_input");
 
 function timeOver() {
     mainPageHeader.textContent = "Time is up!"
-    mainContainer.textContent = "You earned " + point + " points."
+    mainContainer.textContent = "You earned " + point + " point(s)."
     resultInput.setAttribute("class","display");
 };
 
 // Send the data to local storage upon submit button click
-var submitButton = document.getElementById("submitbutton");
-var userName = document.querySelector("input");
+
 submitButton.addEventListener("click",function(){
-    console.log(userName.value);
-})
+    var userName = userNameInput.value;
+    var score = point;
+    var result = {
+        userName: userName,
+        score: score
+    };
+    resultHistory.push(result);
+    localStorage.setItem("codingquizresult",JSON.stringify(resultHistory));
+    resultInput.setAttribute("class","hidden");
+    replay.setAttribute("class","display");
+    userNameInput.value = null;
+});
+
+// Restart the game by clicking replay
+
+var replayButton = document.getElementById("replaybutton");
+replayButton.addEventListener("click",function(){
+    location.reload();
+});
 
 // Display qiuz contents on the page
 // Create unordered list element
@@ -91,13 +118,13 @@ function answerSelect(listNum, rightAnswerLocation) {
     list.setAttribute("style","pointer-events: none;");
     // Wait for one second and show new quiz
     setTimeout(function(){
-        if (i < quizList.length - 1){
+        if (i < quizList.length - 1 && secondsLeft > 0){
             i++;
             newQuiz();
             listNum.setAttribute("class", "");
             bottomText.textContent = "";
             list.setAttribute("style","pointer-events: auto;");
-        } else {
+        } else if (i === quizList.length - 1) {
             // Ask user to wait when there is no more questions 
             mainPageHeader.textContent = "";
             mainContainer.textContent = "There is no more quiz, sorry! Please wait until the remaining time becomes 0.";
