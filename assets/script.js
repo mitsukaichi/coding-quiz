@@ -62,6 +62,9 @@ submitButton.addEventListener("click",function(){
     resultInput.setAttribute("class","hidden");
     replay.setAttribute("class","display");
     userNameInput.value = null;
+    mainPageHeader.textContent = "";
+    mainContainer.textContent = "";
+    bottomText.textContent = "";
 });
 
 // Restart the game by clicking replay
