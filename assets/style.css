@@ -6,7 +6,16 @@
 
 header {
     text-align: center;
-    padding: 10px 100px;
+    padding: 0px 100px;
+}
+
+/* style nav */
+
+header nav ol{
+    list-style: none;
+    display: flex;
+    min-width: 100px;
+    justify-content: space-evenly;
 }
 
 /* style the start button */
@@ -19,7 +28,7 @@ header {
 }
 
 /* style the answer options displayed as an unordered list */
-li {
+ul li {
     padding: 10px 10px;
     margin: 5px auto;
     list-style: none;
@@ -27,6 +36,23 @@ li {
     color: #495159;
     border-radius: 10px;
     max-width: 800px;
+}
+
+/* style the ordered list in the high score page */
+main ol li {
+    text-align: left;
+    padding: 10px 10px;
+    margin: 5px auto;
+    color: #495159;
+    border-radius: 10px;
+    max-width: 800px;
+}
+
+/* style the content in the high score page */
+#highscoreresult{
+    display: flex;
+    justify-content: center;
+    font-size: 120%;
 }
 
 .correct{
@@ -37,6 +63,16 @@ li {
 .wrong{
     background-color: #FAB9B9;
     border-color: #FAB9B9;
+}
+
+
+/* footer nav */
+
+footer nav ol{
+    list-style: none;
+    display: flex;
+    min-width: 100px;
+    justify-content: space-evenly;
 }
 
 /* style the result submission screen*/
