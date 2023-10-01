@@ -6,7 +6,10 @@
 
 header {
     text-align: center;
-    padding: 0px 100px;
+}
+
+h1{
+    padding-top: 30px;
 }
 
 /* style nav */
@@ -15,7 +18,11 @@ header nav ol{
     list-style: none;
     display: flex;
     min-width: 100px;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+}
+
+header nav li{
+    padding: 15px;
 }
 
 /* style the start button */
@@ -91,13 +98,18 @@ input{
     border: 3px solid #495159;
 }
 
+/* style the clear history section*/
+.clearhistory{
+    display: block;
+}
+
 .hidden{
     display: none;
 }
 
 
 .display{
-    display: inline-block;
+    display: block;
 }
 
 @media screen and (max-width: 768px) {

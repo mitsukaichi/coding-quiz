@@ -11,28 +11,45 @@ resultHistory = JSON.parse(localStorage.getItem("codingquizresult"));
 6. If the item was not added to anywhere in the list, add the item to the end of the list
 7. Once the process 3 - 5 is done for the all items in the original list, return the reordered list
 */
-var resultOrderedByScore = [];
 
-for (i = 0; i < resultHistory.length; i++) {
-    var added = false;
-    for (j = 0; j < resultOrderedByScore.length; j++){
-        if (resultHistory[i].score > resultOrderedByScore[j].score){
-            resultOrderedByScore.splice(j,0,resultHistory[i]);
-            added = true;
-            break;
+var resultOrderedByScore = [];
+var showHighScoreList = document.querySelector("ol");
+
+
+// Show placeholder text on the page when there is no score recorded //
+var scoreEmpty = document.querySelector(".scoreempty");
+var clearHisoty = document.querySelector(".clearhistory");
+
+if (resultHistory === null){
+    scoreEmpty.setAttribute("class","display scoreempty");
+    clearHisoty.setAttribute("class","clearhistory hidden")
+} else {
+    // Reorder the result by the score
+    for (i = 0; i < resultHistory.length; i++) {
+        var added = false;
+        for (j = 0; j < resultOrderedByScore.length; j++){
+            if (resultHistory[i].score > resultOrderedByScore[j].score){
+                resultOrderedByScore.splice(j,0,resultHistory[i]);
+                added = true;
+                break;
+            };
+        };
+        if (added === false) {
+            resultOrderedByScore.push(resultHistory[i]);
         };
     };
-    if (added === false) {
-        resultOrderedByScore.push(resultHistory[i]);
+    // Show high scores on the page
+    for (i = 0; i < resultOrderedByScore.length; i++){
+        list = document.createElement("li");
+        list.textContent = resultOrderedByScore[i].score + " points by " + resultOrderedByScore[i].userName;
+        showHighScoreList.appendChild(list);
     };
 };
 
-// Show high scores on the page
-var showHighScoreList = document.querySelector("ol")
+// Clear local storage and refresh the screen at the button click //
+var clearHistoryButton = document.getElementById("clearhistorybutton");
 
-for (i = 0; i < resultOrderedByScore.length; i++){
-    list = document.createElement("li");
-    list.textContent = resultOrderedByScore[i].score + " points by " + resultOrderedByScore[i].userName;
-    showHighScoreList.appendChild(list);
-};
-
+clearHistoryButton.addEventListener("click", function(){
+    localStorage.clear();
+    location.reload();
+});
