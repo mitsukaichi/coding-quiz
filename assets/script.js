@@ -130,7 +130,6 @@ function answerSelect(listNum, rightAnswerLocation) {
         } else if (i === quizList.length - 1) {
             // Game ends after user answers the last que0stion 
             mainPageHeader.textContent = "";
-            mainContainer.textContent = "You answered all the questions!";
             bottomText.textContent = "";
             timeOver();
         }
