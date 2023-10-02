@@ -43,7 +43,7 @@ startButton.addEventListener("click",function(){
 var resultInput = document.getElementById("result_input");
 
 function timeOver() {
-    mainPageHeader.textContent = "Time is up!"
+    mainPageHeader.textContent = "Game is over!"
     mainContainer.textContent = "You earned " + point + " point(s)."
     resultInput.setAttribute("class","display");
 };
@@ -128,10 +128,11 @@ function answerSelect(listNum, rightAnswerLocation) {
             bottomText.textContent = "";
             list.setAttribute("style","pointer-events: auto;");
         } else if (i === quizList.length - 1) {
-            // Ask user to wait when there is no more questions 
+            // Game ends after user answers the last que0stion 
             mainPageHeader.textContent = "";
-            mainContainer.textContent = "There is no more quiz, sorry! Please wait until the remaining time becomes 0.";
+            mainContainer.textContent = "You answered all the questions!";
             bottomText.textContent = "";
+            timeOver();
         }
 
     },1000)

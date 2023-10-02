@@ -98,11 +98,6 @@ input{
     border: 3px solid #495159;
 }
 
-/* style the clear history section*/
-.clearhistory{
-    display: block;
-}
-
 .hidden{
     display: none;
 }
