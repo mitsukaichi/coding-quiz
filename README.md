@@ -13,8 +13,8 @@ I developed a webpage that meets the following criteria:
 
 - [Play page](https://mitsukaichi.github.io/coding-quiz/)
 - [High Score](https://mitsukaichi.github.io/coding-quiz/highscore/highscore.html) 
-- [Screenshot of play page](https://github.com/mitsukaichi/coding-quiz/blob/main/assets/screenshot1.png)
-- [Screenshot of high score page](https://github.com/mitsukaichi/coding-quiz/blob/main/assets/screenshot2.png)
+- [Screenshot of play page](/coding-quiz/assets/images/screenshot1.png)
+- [Screenshot of high score page](/coding-quiz/assets/images/screenshot2.png)
 
 ## What I learnt from this project 
 
